@@ -10,6 +10,7 @@ export function getPlanetsNamesWithMoons(data) {
     .map((planet) => planet.name);
 }
 
+//initial solution : just worked off the first value i saw
 //export function getPlanetsNamesWithMoons(data) {
 //  return data.planets
 //    .filter((planet) => planet.moonsCount > 0)

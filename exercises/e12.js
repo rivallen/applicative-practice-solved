@@ -11,6 +11,8 @@ export function allPlanetsMoonsCount(data) {
     .reduce((number, value) => number + value);
 }
 
+//this felt janky. is there a way to achieve this with like a longer data.planets.moonCount.reduce?
+
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-12"
 // If the test has all tests passed, switch to the next exercise file
