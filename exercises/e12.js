@@ -5,10 +5,11 @@ import { data } from "../data/data";
 // Return example: 42
 
 export function allPlanetsMoonsCount(data) {
-  // Your code goes here...
+  return data.planets
+    .filter((planet) => planet.moonsCount)
+    .map((planet) => planet.moonsCount)
+    .reduce((number, value) => number + value);
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-12"
