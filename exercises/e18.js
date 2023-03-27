@@ -3,28 +3,53 @@ import { data } from "../data/data";
 // SPACE DATA EXERCISE 16
 // Return the year with the greatest number of Asteroids discoveries
 // Return example: 1902
-
 export function getGreatestDiscoveryYear(data) {
-  let target = 0;
-  let targetIndex = 0;
-  const discoveryYears = data.asteroids.map(
-    (asteroid) => asteroid.discoveryYear
-  );
+  let yearCounts = {};
 
-  discoveryYears
-    .map(
-      (mappedYear) =>
-        discoveryYears.filter((year) => year === mappedYear).length
-    )
-    .map((value, index) => {
-      if (value > target) {
-        target = value;
-        targetIndex = index;
+  data.asteroids.forEach((element) => {
+    element.asteroids.forEach((asteroid) => {
+      const discoveryYear = asteroid.discoveryYear;
+      if (discoveryYear in yearCounts) {
+        yearCounts[discoveryYear]++;
+      } else {
+        yearCounts[discoveryYear] = 1;
       }
     });
+  });
 
-  return discoveryYears[targetIndex];
+  let maxYear = null;
+  let maxCount = 0;
+
+  for (let year in yearCounts) {
+    if (yearCounts[year] > maxCount) {
+      maxYear = parseInt(year);
+      maxCount = yearCounts[year];
+    }
+  }
+
+  return maxYear;
 }
+
+//  let target = 0;
+//  let targetIndex = 0;
+//  const discoveryYears = data.asteroids.map(
+//    (asteroid) => asteroid.discoveryYear
+//  );
+//
+//  discoveryYears
+//    .map(
+//      (mappedYear) =>
+//        discoveryYears.filter((year) => year === mappedYear).length
+//    )
+//    .map((value, index) => {
+//      if (value > target) {
+//        target = value;
+//        targetIndex = index;
+//      }
+//    });
+//
+//  return discoveryYears[targetIndex];
+//}
 
 // failed initial attempt
 //export function getGreatestDiscoveryYear(data) {
